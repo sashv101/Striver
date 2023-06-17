@@ -1,0 +1,19 @@
+public static void findPreSuc(Node root, int key)
+{
+    //Good question for recurssion usecase
+    if(root.data<key) {
+        if(pre==null || pre.data<root.data) pre = root; 
+    }
+    else if(root.data>key) {
+        if(suc==null || suc.data>root.data) suc = root;
+    }
+    
+    if(root.left!=null) findPreSuc(root.left, key);
+    if(root.right!=null) findPreSuc(root.right, key);
+    
+    /* There are two static nodes defined above pre(representing predecessor) and suc(representing successor) as follows:
+       static Node pre=null,suc=null
+       You need to update these both.
+       And the data inside these classes will be printed automatically by the driver code. 
+    */
+}
