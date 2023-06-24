@@ -1,0 +1,26 @@
+class Solution {
+    public void dfs(int sr,int sc,int[][] grid,int origColor,int newColor){
+        grid[sr][sc]=newColor;
+        int dx[] = {1,0,-1,0}; // this is really great way when we habve to move in 4 directions
+        int dy[] = {0,1,0,-1};
+        int n=grid.length;
+        int m=grid[0].length;
+        for(int i=0;i<4;i++){
+            int row = sr + dx[i];
+            int col = sc + dy[i];
+
+    if(row>=0 && row<n && col<m && col>=0 && grid[row][col]==origColor && grid[row][col]!=newColor){
+        dfs(row,col,grid,origColor,newColor);
+    }
+        }
+    }
+    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+        int origColor=image[sr][sc];
+        int[][] ans = image;
+        dfs(sr,sc,ans,origColor,color);
+        
+
+        return ans;
+        
+    }
+}
